@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Research Timeline</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+        padding: 2rem;
+    }
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        color: #1a1a2e;
+    }
+    h2 {
+        font-size: 1.4rem;
+        margin: 2rem 0 1rem;
+        color: #1a1a2e;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 0.3rem;
+    }
+    .meta {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+    }
+    .legend-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .filter-bar {
+        margin-bottom: 1.5rem;
+    }
+    .filter-bar label {
+        font-size: 0.9rem;
+        margin-right: 0.5rem;
+    }
+    .filter-bar select {
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 0.9rem;
+    }
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+    }
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 8px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #ddd;
+    }
+    .timeline-entry {
+        position: relative;
+        margin-bottom: 1.5rem;
+        padding-left: 20px;
+    }
+    .timeline-dot {
+        position: absolute;
+        left: -26px;
+        top: 6px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+    }
+    .timeline-content {
+        background: #fff;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .timeline-date {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #555;
+    }
+    .timeline-type {
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.3rem;
+    }
+    .timeline-desc {
+        font-size: 0.95rem;
+    }
+    .entity {
+        display: inline-block;
+        margin-top: 0.4rem;
+        font-size: 0.8rem;
+        color: #888;
+        font-style: italic;
+    }
+    .source-link {
+        font-size: 0.8rem;
+        color: #1f77b4;
+        text-decoration: none;
+    }
+    .source-link:hover {
+        text-decoration: underline;
+    }
+    /* Correlations table */
+    .corr-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+    }
+    .corr-table th, .corr-table td {
+        padding: 0.5rem 0.7rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+    .corr-table th {
+        background: #f0f0f0;
+        font-weight: 600;
+    }
+    .corr-table tr:hover {
+        background: #f9f9ff;
+    }
+    .summary-stat {
+        display: inline-block;
+        background: #fff;
+        padding: 0.8rem 1.2rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        margin: 0.3rem 0.5rem 0.3rem 0;
+        font-size: 0.9rem;
+    }
+    .summary-stat strong {
+        font-size: 1.4rem;
+        display: block;
+        color: #1a1a2e;
+    }
+    .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<h1>Meta / Linux Research -- Correlation Timeline</h1>
+<p class="meta">Generated 2026-03-11 10:58 UTC | Task 5.1 Synthesis</p>
+
+<div style="margin-bottom:1.5rem;">
+    <div class="summary-stat"><strong>19</strong> Total Events</div>
+    <div class="summary-stat"><strong>9</strong> Event Types</div>
+    <div class="summary-stat"><strong>2</strong> Temporal Correlations</div>
+</div>
+
+<h2>Legend</h2>
+<div class="legend">
+    <span class="legend-item"><span class="legend-dot" style="background:#7f7f7f;"></span>Governance</span> <span class="legend-item"><span class="legend-dot" style="background:#d62728;"></span>Licensing Change</span> <span class="legend-item"><span class="legend-dot" style="background:#ff6961;"></span>Licensing Controversy</span> <span class="legend-item"><span class="legend-dot" style="background:#d62728;"></span>Licensing Decision</span> <span class="legend-item"><span class="legend-dot" style="background:#7f7f7f;"></span>News Mention</span> <span class="legend-item"><span class="legend-dot" style="background:#1f77b4;"></span>Patent Filing</span> <span class="legend-item"><span class="legend-dot" style="background:#8c564b;"></span>Personnel Move</span> <span class="legend-item"><span class="legend-dot" style="background:#7f7f7f;"></span>Standards Audit</span> <span class="legend-item"><span class="legend-dot" style="background:#17becf;"></span>Strategic Analysis</span>
+</div>
+
+<h2>Filter</h2>
+<div class="filter-bar">
+    <label for="type-filter">Event type:</label>
+    <select id="type-filter" onchange="filterTimeline(this.value)">
+        <option value="all">All types</option>
+        <option value="governance">Governance</option><option value="licensing_change">Licensing Change</option><option value="licensing_controversy">Licensing Controversy</option><option value="licensing_decision">Licensing Decision</option><option value="news_mention">News Mention</option><option value="patent_filing">Patent Filing</option><option value="personnel_move">Personnel Move</option><option value="standards_audit">Standards Audit</option><option value="strategic_analysis">Strategic Analysis</option>
+    </select>
+</div>
+
+<h2>Timeline</h2>
+<div class="timeline" id="timeline">
+
+        <div class="timeline-entry" data-type="licensing_decision">
+            <div class="timeline-dot" style="background:#d62728;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2014-10-28</div>
+                <div class="timeline-type" style="color:#d62728;">Licensing Decision</div>
+                <div class="timeline-desc">Facebook introduces BSD+Patents license for React: Facebook releases React under a BSD license with an additional 'PATENTS' file granting a patent license that is automatically revoked if the user sues Facebook for patent infringement. This is the 'BSD+Patents' license model. <a href="https://github.com/facebook/react/blob/v0.12.0/PATENTS" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="licensing_controversy">
+            <div class="timeline-dot" style="background:#ff6961;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2017-04-18</div>
+                <div class="timeline-type" style="color:#ff6961;">Licensing Controversy</div>
+                <div class="timeline-desc">Apache Software Foundation bans BSD+Patents license: The Apache Software Foundation adds Facebook's BSD+Patents license to its Category-X list, effectively banning its use in Apache projects. ASF declares the patent retaliation clause incompatible with the Apache License. This forces major projects to reconsider their React dependencies. <a href="https://www.apache.org/legal/resolved.html" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="licensing_controversy">
+            <div class="timeline-dot" style="background:#ff6961;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2017-07-16</div>
+                <div class="timeline-type" style="color:#ff6961;">Licensing Controversy</div>
+                <div class="timeline-desc">WordPress announces move away from React: WordPress co-founder Matt Mullenweg announces that WordPress will stop using React due to the BSD+Patents license. Given WordPress's market share, this is a significant blow to React's adoption trajectory. <a href="https://ma.tt/2017/09/on-react-and-wordpress/" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="licensing_change">
+            <div class="timeline-dot" style="background:#d62728;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2017-09-22</div>
+                <div class="timeline-type" style="color:#d62728;">Licensing Change</div>
+                <div class="timeline-desc">Facebook relicenses React to MIT: After sustained community backlash and the WordPress departure, Facebook relicenses React (and Jest, Flow, Immutable.js) from BSD+Patents to the MIT license. Engineering VP Sophie Alpert announces the change. This represents a capitulation to community pressure and sets a precedent for Facebook's li <a href="https://engineering.fb.com/2017/09/22/web/relicensing-react-jest-flow-and-immutable-js/" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="licensing_decision">
+            <div class="timeline-dot" style="background:#d62728;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2019-03-01</div>
+                <div class="timeline-type" style="color:#d62728;">Licensing Decision</div>
+                <div class="timeline-desc">Facebook releases PyTorch under modified BSD license: PyTorch is released under a standard BSD-3-Clause license without the patent rider, reflecting lessons learned from the React controversy. This positions PyTorch for broad adoption in the AI/ML community without licensing friction. <a href="https://github.com/pytorch/pytorch/blob/main/LICENSE" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="governance">
+            <div class="timeline-dot" style="background:#7f7f7f;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2019-03-13</div>
+                <div class="timeline-type" style="color:#7f7f7f;">Governance</div>
+                <div class="timeline-desc">Presto Foundation established under the Linux Foundation with Meta (Facebook) as founding member. <a href="https://www.linuxfoundation.org/about/members" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="patent_filing">
+            <div class="timeline-dot" style="background:#1f77b4;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2019-09-18</div>
+                <div class="timeline-type" style="color:#1f77b4;">Patent Filing</div>
+                <div class="timeline-desc">Patent US11119931B1: Data pipeline for microkernel operating system (expired) <a href="https://patents.google.com/patent/US11119931B1/en" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="governance">
+            <div class="timeline-dot" style="background:#7f7f7f;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2019-11-06</div>
+                <div class="timeline-type" style="color:#7f7f7f;">Governance</div>
+                <div class="timeline-desc">GraphQL Foundation established under the Linux Foundation, stewarding the Meta-created GraphQL specification. <a href="https://www.linuxfoundation.org/about/members" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="patent_filing">
+            <div class="timeline-dot" style="background:#1f77b4;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2021-05-04</div>
+                <div class="timeline-type" style="color:#1f77b4;">Patent Filing</div>
+                <div class="timeline-desc">Patent US20210286628A1: Operating System With A Single Kernel Stack Per Processor (abandoned) <a href="https://patents.google.com/patent/US20210286628A1/en" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="governance">
+            <div class="timeline-dot" style="background:#7f7f7f;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2022-09-12</div>
+                <div class="timeline-type" style="color:#7f7f7f;">Governance</div>
+                <div class="timeline-desc">Meta donates PyTorch to the Linux Foundation, establishing the PyTorch Foundation as an LF project. Meta retains significant governance role in the new foundation. <a href="https://www.linuxfoundation.org/about/members" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="personnel_move">
+            <div class="timeline-dot" style="background:#8c564b;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2023</div>
+                <div class="timeline-type" style="color:#8c564b;">Personnel Move</div>
+                <div class="timeline-desc">Roman Gushchin: Meta -&gt; Google (cgroups/memory contributor)</div>
+                <span class="entity">Roman Gushchin</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="personnel_move">
+            <div class="timeline-dot" style="background:#8c564b;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2023</div>
+                <div class="timeline-type" style="color:#8c564b;">Personnel Move</div>
+                <div class="timeline-desc">Kirill Shutemov: Intel -&gt; Meta (memory management developer)</div>
+                <span class="entity">Kirill Shutemov</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="licensing_decision">
+            <div class="timeline-dot" style="background:#d62728;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2023-07-18</div>
+                <div class="timeline-type" style="color:#d62728;">Licensing Decision</div>
+                <div class="timeline-desc">Meta releases Llama 2 with custom 'open' license: Meta releases Llama 2 under a custom license that allows free use and redistribution but includes restrictions: commercial users with &gt;700M monthly active users must obtain a separate license from Meta. The license is not OSI-approved and has been criticised as 'open-washing' -- marketing proprietar <a href="https://ai.meta.com/llama/license/" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="personnel_move">
+            <div class="timeline-dot" style="background:#8c564b;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2024</div>
+                <div class="timeline-type" style="color:#8c564b;">Personnel Move</div>
+                <div class="timeline-desc">Josef Bacik: Meta -&gt; Anthropic (Btrfs maintainer)</div>
+                <span class="entity">Josef Bacik</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="licensing_decision">
+            <div class="timeline-dot" style="background:#d62728;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2024-04-18</div>
+                <div class="timeline-type" style="color:#d62728;">Licensing Decision</div>
+                <div class="timeline-desc">Meta releases Llama 3 with updated custom license: Meta releases Llama 3 under an updated community license that maintains the 700M MAU commercial threshold and adds acceptable use restrictions prohibiting certain applications. The license continues to be criticised as 'source available' rather than truly open source. Meta brands it as 'open' while  <a href="https://llama.meta.com/llama3/license/" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="licensing_decision">
+            <div class="timeline-dot" style="background:#d62728;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2024-07-23</div>
+                <div class="timeline-type" style="color:#d62728;">Licensing Decision</div>
+                <div class="timeline-desc">Llama 3.1 release maintains restrictive license: Meta releases Llama 3.1 (405B, 70B, 8B) under the same custom community license. Despite being marketed as the largest 'open' model release, the license remains non-OSI-compliant. The Open Source Initiative continues to object to Meta's use of 'open' terminology for models with usage and commercial  <a href="https://ai.meta.com/blog/meta-llama-3-1/" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="strategic_analysis">
+            <div class="timeline-dot" style="background:#17becf;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2025-01-01</div>
+                <div class="timeline-type" style="color:#17becf;">Strategic Analysis</div>
+                <div class="timeline-desc">Industry discussion: potential closed-weights pivot: Industry analysts and open-source advocates discuss the possibility that Meta may further restrict model weights in future releases, moving from 'available weights' to fully closed or API-only access. Drivers include competitive pressure from OpenAI/Google, safety concerns, and potential regulatory  <a href="https://www.semianalysis.com/" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="news_mention">
+            <div class="timeline-dot" style="background:#7f7f7f;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2026-03-09</div>
+                <div class="timeline-type" style="color:#7f7f7f;">News Mention</div>
+                <div class="timeline-desc">[Phoronix] There's Hope That At Least Colorado's Age Attestation Bill Could Exclude Open-Source <a href="https://www.phoronix.com/news/Colorado-Maybe-Exclude-OSS" target="_blank" class="source-link">[source]</a></div>
+                
+            </div>
+        </div>
+
+        <div class="timeline-entry" data-type="standards_audit">
+            <div class="timeline-dot" style="background:#7f7f7f;"></div>
+            <div class="timeline-content">
+                <div class="timeline-date">2026-03-11</div>
+                <div class="timeline-type" style="color:#7f7f7f;">Standards Audit</div>
+                <div class="timeline-desc">OpenXR extension audit completed: Meta has 76 of 265 extensions (28.7% of total) <a href="https://registry.khronos.org/OpenXR/specs/1.1/man/html/" target="_blank" class="source-link">[source]</a></div>
+                <span class="entity">Meta Platforms Inc</span>
+            </div>
+        </div>
+</div>
+
+<h2>Temporal Correlations (within 30 days)</h2>
+<p style="margin-bottom:0.8rem;color:#666;font-size:0.9rem;">
+    Events of different types occurring within 30 days of each other,
+    suggesting potential coordination or causal relationships.
+</p>
+<table class="corr-table">
+<thead>
+<tr>
+    <th>Days Apart</th>
+    <th>Event A</th>
+    <th>Event B</th>
+    <th>Date A</th>
+    <th>Date B</th>
+</tr>
+</thead>
+<tbody>
+
+            <tr>
+                <td>2</td>
+                <td><span style="color:#7f7f7f;">News Mention</span>: [Phoronix] There's Hope That At Least Colorado's Age Attestation Bill Could Excl...</td>
+                <td><span style="color:#7f7f7f;">Standards Audit</span>: OpenXR extension audit completed: Meta has 76 of 265 extensions (28.7% of total)</td>
+                <td>2026-03-09</td>
+                <td>2026-03-11</td>
+            </tr>
+
+            <tr>
+                <td>12</td>
+                <td><span style="color:#d62728;">Licensing Decision</span>: Facebook releases PyTorch under modified BSD license: PyTorch is released under ...</td>
+                <td><span style="color:#7f7f7f;">Governance</span>: Presto Foundation established under the Linux Foundation with Meta (Facebook) as...</td>
+                <td>2019-03-01</td>
+                <td>2019-03-13</td>
+            </tr>
+</tbody>
+</table>
+
+<script>
+function filterTimeline(type) {
+    var entries = document.querySelectorAll('.timeline-entry');
+    entries.forEach(function(entry) {
+        if (type === 'all' || entry.getAttribute('data-type') === type) {
+            entry.classList.remove('hidden');
+        } else {
+            entry.classList.add('hidden');
+        }
+    });
+}
+</script>
+
+</body>
+</html>
