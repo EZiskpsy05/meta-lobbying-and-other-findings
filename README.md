@@ -1,11 +1,11 @@
+_______________________________________________________________________________
+Website: https://tboteproject.com
+Most Recent Repository: https://tboteproject.com/git/hekate/attestation-findings
+_______________________________________________________________________________
 Help keep the server running!
-PumpFun (donate to me on PumpFun upper-up account): dXQ3PScgaLCvpf9uZLFaqrrSCXux7fiki6ep5HeH1iK
-
 Monero: 451CjP6mgu12yvmDLxLduYYw5Py3Nnb91RwoRYCnhMwhGKM5hxYSaAWapq7CdRQz3qRJbUqqrnYBzW7L4aUt7nhbAYGmLSX
 
- 
 Thank you for your support.
-
 
 # Meta Platforms: Lobbying, Dark Money, and the App Store Accountability Act
 
@@ -23,7 +23,7 @@ Meta spent a record $26.3 million on federal lobbying in 2025, deployed 86+ lobb
 
 **2026-03-16 UPDATE:** DCA's EIN has been identified: 33-2669790. "Digital Childhood Alliance Inc," Delaware, officer Melissa McKay, same address as sister org DCI (213 N Market St PMB 1039, Wilmington DE). Tax year 2024 gross receipts: under $25,000 (990-N e-Postcard filer). An organization coordinating a 20+ state legislative campaign with confirmed Meta funding reports less than $25K in total receipts. The real money never touches this EIN.
 
-This investigation traced funding flows across five confirmed channels, analyzed $2.0 billion in dark money grants, searched 59,736 DAF recipients, parsed LD-2 filings, mapped campaign contributions across four states, documented a coordinated Israeli reconnaissance operation targeting this repository, and exposed Heritage Foundation's role as an institutional credibility launderer for the DCA coalition.
+This investigation traced funding flows across five confirmed channels, analyzed $2.0 billion in dark money grants, searched 59,736 DAF recipients, parsed LD-2 filings, mapped campaign contributions across four states and reveals Heritage Foundation's role as an institutional credibility launderer for the DCA coalition.
 
 ## Key Visuals
 
@@ -381,6 +381,3 @@ Verify any finding using the source URLs and database identifiers provided throu
 ## License
 
 OSINT research product. All findings based on public records. Source data cited throughout.
-
-## Donate
-Official PumpFun (TBOTEProject PumpFun Coin): https://pump.fun/coin/7h93HKTvc5ro9oJCWdev9ae4X3GoRsNjmvnav11Lpump
